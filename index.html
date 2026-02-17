@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKATE.CUST - Underground Custom Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #ffffff;
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Skateboarding Aesthetic Borders */
+        .skate-border-bold {
+            border: 3px solid #000;
+        }
+
+        .skate-border-thin {
+            border: 1px solid #000;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fff;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #000;
+        }
+
+        /* Interactions */
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-card:hover {
+            box-shadow: 12px 12px 0px 0px #000;
+            transform: translate(-6px, -6px);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .glitch-hover:hover {
+            animation: glitch 0.2s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .bg-grid {
+            background-image: linear-gradient(#f0f0f0 1px, transparent 1px), linear-gradient(90deg, #f0f0f0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar bg-grid">
+
+    <!-- Header & Nav -->
+    <nav class="sticky top-0 z-50 bg-white border-b-4 border-black px-6 md:px-12 py-5 flex justify-between items-center">
+        <div class="flex items-center gap-8">
+            <h1 class="text-4xl font-black tracking-tighter uppercase italic cursor-pointer glitch-hover" onclick="showSection('shop')">
+                SKATE.CUST
+            </h1>
+            <div class="hidden lg:flex space-x-6 font-bold uppercase text-[11px] tracking-[0.3em]">
+                <a href="#" onclick="showSection('shop')" class="nav-link">Catalog</a>
+                <a href="#" onclick="showSection('style-guide')" class="nav-link">Style Guide</a>
+                <a href="#" class="nav-link">Drops</a>
+                <a href="#" class="nav-link">Archives</a>
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-6 font-black uppercase text-xs">
+            <button class="hidden md:block hover:underline">Search</button>
+            <button class="relative border-2 border-black px-4 py-1 hover:bg-black hover:text-white transition-all">
+                Bag (0)
+            </button>
+            <button class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Marquee Banner -->
+    <div class="bg-black text-white py-2 overflow-hidden whitespace-nowrap border-b-2 border-black">
+        <div class="inline-block animate-marquee uppercase font-black text-[10px] tracking-[0.5em]">
+            NEW CUSTOM DROPS EVERY FRIDAY • WORLDWIDE SHIPPING • NO REPRINTS • 1 OF 1 ITEMS AVAILABLE • 
+            NEW CUSTOM DROPS EVERY FRIDAY • WORLDWIDE SHIPPING • NO REPRINTS • 1 OF 1 ITEMS AVAILABLE • 
+        </div>
+    </div>
+
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+
+    <!-- Hero -->
+    <header class="relative border-b-4 border-black bg-white py-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 text-center md:text-left">
+                <span class="inline-block bg-black text-white px-3 py-1 text-[10px] font-black uppercase mb-6">Established 2024</span>
+                <h2 class="text-6xl md:text-9xl font-black uppercase leading-[0.85] tracking-tighter mb-8">
+                    WE MAKE<br><span class="text-white drop-shadow-[2px_2px_0_#000] [-webkit-text-stroke:2px_black]">IT RARE.</span>
+                </h2>
+                <p class="text-zinc-500 font-bold uppercase text-sm tracking-widest mb-10 max-w-md">
+                    รวบรวมเสื้อผ้าและไอเท็มคัสตอมชิ้นเดียวในโลก สำหรับผู้ที่หลงใหลในวัฒนธรรมสเก็ตบอร์ด
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <button onclick="showSection('shop')" class="bg-black text-white px-10 py-4 font-black uppercase text-sm border-2 border-black hover:bg-white hover:text-black transition-all">
+                        Explore Collection
+                    </button>
+                    <button onclick="showSection('style-guide')" class="bg-white text-black px-10 py-4 font-black uppercase text-sm border-2 border-black hover:bg-zinc-100 transition-all">
+                        Get Inspired
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1 w-full max-w-md aspect-square bg-zinc-100 border-4 border-black relative flex items-center justify-center">
+                <div class="text-zinc-300 font-black text-8xl italic opacity-30 select-none">CUST</div>
+                <div class="absolute -bottom-6 -right-6 bg-black text-white p-6 rotate-12 font-black uppercase text-xl">
+                    1 of 1
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        
+        <!-- Shop Section -->
+        <section id="shop-section">
+            <div class="flex flex-col md:flex-row justify-between items-baseline mb-16 border-b-2 border-black pb-4">
+                <h3 class="text-4xl font-black uppercase italic tracking-tighter">Current Catalog</h3>
+                <div class="flex gap-6 mt-4 md:mt-0 font-bold uppercase text-[10px] tracking-widest overflow-x-auto w-full md:w-auto pb-2">
+                    <button onclick="filterItems('all')" class="cat-link active text-black border-b-2 border-black">All Items</button>
+                    <button onclick="filterItems('top')" class="cat-link text-zinc-400 hover:text-black transition-colors">Tops</button>
+                    <button onclick="filterItems('bottom')" class="cat-link text-zinc-400 hover:text-black transition-colors">Bottoms</button>
+                    <button onclick="filterItems('shoes')" class="cat-link text-zinc-400 hover:text-black transition-colors">Footwear</button>
+                    <button onclick="filterItems('acc')" class="cat-link text-zinc-400 hover:text-black transition-colors">Jewelry</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Products injected via JS -->
+            </div>
+        </section>
+
+        <!-- Style Guide Section -->
+        <section id="style-guide-section" class="hidden">
+            <div class="mb-16">
+                <h3 class="text-5xl font-black uppercase italic tracking-tighter">Lookbook & Styles</h3>
+                <p class="text-zinc-500 font-bold uppercase text-xs mt-2 tracking-[0.3em]">How to rock our custom pieces</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Style 1 -->
+                <div class="group cursor-pointer">
+                    <div class="bg-zinc-100 border-2 border-black aspect-[4/5] mb-6 relative overflow-hidden flex items-center justify-center">
+                        <span class="text-zinc-300 group-hover:scale-110 transition-transform duration-500 italic font-black uppercase"></span>
+                        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-2xl font-black uppercase tracking-tighter">90's Baggy Era</h4>
+                            <p class="text-zinc-500 text-sm mt-1 uppercase font-bold tracking-tighter">Oversized / Heavy / Raw</p>
+                        </div>
+                        <span class="text-xl"><i class="fas fa-arrow-right -rotate-45"></i></span>
+                    </div>
+                </div>
+
+                <!-- Style 2 -->
+                <div class="group cursor-pointer">
+                    <div class="bg-zinc-100 border-2 border-black aspect-[4/5] mb-6 relative overflow-hidden flex items-center justify-center">
+                        <span class="text-zinc-300 group-hover:scale-110 transition-transform duration-500 italic font-black uppercase"></span>
+                        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-2xl font-black uppercase tracking-tighter">Minimal Grunge</h4>
+                            <p class="text-zinc-500 text-sm mt-1 uppercase font-bold tracking-tighter">B&W / Distressed / Silver</p>
+                        </div>
+                        <span class="text-xl"><i class="fas fa-arrow-right -rotate-45"></i></span>
+                    </div>
+                </div>
+
+                <!-- Style 3 -->
+                <div class="group cursor-pointer">
+                    <div class="bg-zinc-100 border-2 border-black aspect-[4/5] mb-6 relative overflow-hidden flex items-center justify-center">
+                        <span class="text-zinc-300 group-hover:scale-110 transition-transform duration-500 italic font-black uppercase"></span>
+                        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="text-2xl font-black uppercase tracking-tighter">Cyber-Street</h4>
+                            <p class="text-zinc-500 text-sm mt-1 uppercase font-bold tracking-tighter">Tech / Painted / Bold</p>
+                        </div>
+                        <span class="text-xl"><i class="fas fa-arrow-right -rotate-45"></i></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 border-t-2 border-black pt-10 text-center">
+                <button onclick="showSection('shop')" class="group text-black font-black text-2xl uppercase italic tracking-tighter hover:text-zinc-600 transition-colors">
+                    Start Customizing Your Look <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-zinc-800 pb-20">
+            <div class="md:col-span-6">
+                <h1 class="text-6xl font-black italic tracking-tighter mb-8 uppercase">SKATE.CUST</h1>
+                <p class="text-zinc-400 font-bold uppercase text-xs tracking-[0.4em] mb-12 leading-loose">
+                    เราไม่เชื่อในแมสโปรดักชั่น<br>เราเชื่อในงานมือที่บอกตัวตน<br>สนับสนุนวัฒนธรรมเด็กสเก็ตทั่วไทย
+                </p>
+                <div class="flex gap-8">
+                    <a href="#" class="text-2xl hover:text-zinc-400"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-2xl hover:text-zinc-400"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-2xl hover:text-zinc-400"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="md:col-span-3">
+                <h5 class="text-xs font-black uppercase tracking-widest text-zinc-500 mb-8">Navigation</h5>
+                <ul class="space-y-4 font-bold uppercase text-[10px] tracking-widest">
+                    <li><a href="#" class="hover:text-zinc-400">Products</a></li>
+                    <li><a href="#" class="hover:text-zinc-400">Styling Guide</a></li>
+                    <li><a href="#" class="hover:text-zinc-400">Care Instructions</a></li>
+                    <li><a href="#" class="hover:text-zinc-400">Artists</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h5 class="text-xs font-black uppercase tracking-widest text-zinc-500 mb-8">Newsletter</h5>
+                <div class="relative group">
+                    <input type="text" placeholder="YOUR EMAIL" class="bg-transparent border-b border-white w-full py-2 text-xs font-bold focus:outline-none focus:border-zinc-400">
+                    <button class="absolute right-0 bottom-2 text-xs font-black uppercase">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 flex flex-col md:flex-row justify-between items-center text-[9px] font-black uppercase tracking-[0.5em] text-zinc-600 gap-4">
+            <p>© 2024 SKATE.CUST CREW</p>
+            <p>Designed for the underground</p>
+            <div class="flex gap-4">
+                <span>TH</span>
+                <span class="text-white">EN</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bag Toast -->
+    <div id="toast" class="fixed bottom-12 right-12 bg-white text-black skate-border-bold px-10 py-5 font-black uppercase text-sm z-[100] transform translate-y-32 transition-transform duration-500 shadow-[8px_8px_0_0_#000]">
+        Added to Bag
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "Skull Hand-Painted Tee", price: "฿1,290", category: "top", img: "[เสื้อยืดเพ้นท์มือ]" },
+            { id: 2, name: "Distressed Baggy Denim", price: "฿2,450", category: "bottom", img: "[กางเกงยีนส์คัสตอม]" },
+            { id: 3, name: "Grim Reaper Custom AF1", price: "฿4,800", category: "shoes", img: "[รองเท้าคัสตอม]" },
+            { id: 4, name: "Barbed Wire Silver Ring", price: "฿890", category: "acc", img: "[แหวนคัสตอม]" },
+            { id: 5, name: "Anarchy Bleached Hoodie", price: "฿1,890", category: "top", img: "[เสื้อฮู้ดดี้คัสตอม]" },
+            { id: 6, name: "Splatter Cargo Shorts", price: "฿1,550", category: "bottom", img: "[กางเกงขาสั้นคัสตอม]" },
+            { id: 7, name: "Checked Custom Slip-on", price: "฿3,200", category: "shoes", img: "[รองเท้าสลิปออน]" },
+            { id: 8, name: "Industrial Chain Necklace", price: "฿1,200", category: "acc", img: "[สร้อยคอคัสตอม]" },
+        ];
+
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = items.map(p => `
+                <div class="product-card group bg-white border-2 border-black p-4 flex flex-col">
+                    <div class="bg-zinc-100 aspect-square mb-6 flex items-center justify-center border border-zinc-200 overflow-hidden relative">
+                        <span class="text-zinc-400 text-[10px] font-black uppercase italic group-hover:scale-110 transition-transform duration-500">${p.img}</span>
+                        <div class="absolute top-2 left-2 bg-black text-white px-2 py-0.5 text-[8px] font-black uppercase tracking-widest">Hand-Made</div>
+                    </div>
+                    <div class="flex flex-col h-full">
+                        <h4 class="text-xl font-black uppercase mb-1 tracking-tighter truncate">${p.name}</h4>
+                        <p class="text-zinc-400 mb-6 font-bold tracking-widest text-[11px]">${p.price}</p>
+                        <button onclick="addToBag()" class="mt-auto w-full py-3 bg-white border-2 border-black text-black uppercase text-[10px] font-black hover:bg-black hover:text-white transition-all">
+                            Add to Bag
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterItems(category) {
+            document.querySelectorAll('.cat-link').forEach(btn => {
+                btn.classList.remove('text-black', 'border-b-2', 'border-black');
+                btn.classList.add('text-zinc-400');
+            });
+
+            // Set active state for UI
+            const activeBtn = Array.from(document.querySelectorAll('.cat-link')).find(btn => 
+                (category === 'all' && btn.innerText === 'All Items') || 
+                btn.innerText.toLowerCase().includes(category.toLowerCase())
+            );
+            if(activeBtn) {
+                activeBtn.classList.add('text-black', 'border-b-2', 'border-black');
+                activeBtn.classList.remove('text-zinc-400');
+            }
+
+            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            renderProducts(filtered);
+        }
+
+        function showSection(section) {
+            const shop = document.getElementById('shop-section');
+            const style = document.getElementById('style-guide-section');
+            
+            if (section === 'shop') {
+                shop.classList.remove('hidden');
+                style.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                shop.classList.add('hidden');
+                style.classList.remove('hidden');
+                window.scrollTo({ top: style.offsetTop - 150, behavior: 'smooth' });
+            }
+        }
+
+        function addToBag() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32');
+            }, 3000);
+        }
+
+        window.onload = () => {
+            renderProducts(products);
+        };
+    </script>
+</body>
+</html>
